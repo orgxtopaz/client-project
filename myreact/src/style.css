@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap'); 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    /* background-color: #fafafa; */
+    padding: 0;
+    max-height: 70%;
+    width: 55%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2
+px
+;
+    will-change: top, opacity;
+}
+
+nav {
+    color: #fff;
+    background-color: transparent;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}
