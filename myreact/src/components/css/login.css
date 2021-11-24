@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 
 *{
 	padding: 0;
@@ -8,7 +9,8 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+	overflow: scroll;
+
 }
 
 .wave{
@@ -21,11 +23,11 @@ body{
 
 .container{
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
-    padding: 0 2rem;
+    padding-top: -650px;
 }
 
 .img{
@@ -74,11 +76,15 @@ form{
 }
 
 .i{
-	color: #d9d9d9;
+	color:"5bacdf";
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: black;
+	opacity: 1; /* Firefox */
+  }
 
 .i i{
 	transition: .3s;

@@ -2,8 +2,9 @@ import React from "react";
 import "./css/login.css";
 
 import shape from "./img/shape.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"; //routes
 
-import logo from "./img/logo.png";
 
 //LOG IN
 import avatar from "./img/avatar.svg";
@@ -22,7 +23,7 @@ function addcl(){
 
 function remcl(){
 	let parent = this.parentNode.parentNode;
-	if(this.value == ""){
+	if(this.value === ""){
 		parent.classList.remove("focus");
 	}
 }
@@ -33,63 +34,77 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
+function register(){
+  alert("ss")
+}
+
   return (
     <div>
-        <img src={shape} alt className="shape" />
-    <header>
-      <div className="containerhome">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
-          <h3>Borotoy branch</h3>
-        </div>
-        <div className="linkshome">
-          <ul>
-            <li>
-              <a href="/login">Sign In</a>
-            </li>
-            <li>
-            <a href="/register" >
-            <button type="button" className="btn btn-info" style={{backgroundColor:"5bacdf",color:"white"}}>Sign Up</button>
+        <a href="/">
+        <i
+          className="bi bi-caret-left-square-fill"
+          style={{ fontSize: "40px" ,float:"left",color:"#38d39f",paddingLeft:"5%"}}
+        ></i>
+     </a>
 
-            </a>
-            </li>
-          </ul>
-        </div>
-        <div className="overlay" />
-        <div className="hamburger-menu">
-          <div className="bar" />
-        </div>
-      </div>
-    </header>
-     <img className="wave" src={wave} />
-  <div className="container">
+    <img src={shape} alt="Logo" className="shape" />
+   
+     <img className="wave" alt="Logo" src={wave} />
+  <div className="container" style={{paddingBottom:"-80%",top:"0px"}}>
     <div className="img">
-      <img src={bg} />
+      <img src={bg} alt="Logo" />
     </div>
     <div className="login-content">
       <form action="index.html">
-        <img src={avatar} />
-        <h2 className="title">Welcome</h2>
+        <img src={avatar} alt="Logo" />
+        <h2 className="title">REGISTER</h2>
+
         <div className="input-div one">
           <div className="i">
-            <i className="fas fa-user" />
+            <i className="fas fa-user" style={{color:"5bacdf"}} />
           </div>
           <div className="div">
            
-            <input type="text" className="input" />
+            <input type="text" className="input" placeholder="Full name"  />
           </div>
         </div>
-        <div className="input-div pass">
+
+        <div className="input-div one">
+          <div className="i">
+            <i className="fa fa-envelope" />
+          </div>
+          <div className="div">
+           
+            <input type="email" className="input" placeholder="Email Address" />
+          </div>
+        </div>
+
+        <div className="input-div one">
           <div className="i">
             <i className="fas fa-lock" />
           </div>
           <div className="div">
-      
-            <input type="password" className="input" />
+           
+            <input type="password" className="input"  placeholder="Password"/>
           </div>
         </div>
-        <a href="#">Forgot Password?</a>
-        <input type="submit" className="btn" defaultValue="Login" />
+
+        <div className="input-div pass">
+          <div className="i">
+            <i className="fa fa-key" />
+          </div>
+          <div className="div">
+      
+            <input type="text" className="input"  placeholder="Serial Number"/>
+            <br></br>
+            <br></br>
+            <br></br>
+            <center>
+            <button type="button" className="btn btn-info " onClick={register} style={{backgroundColor:"5bacdf",color:"white"}}>Register</button>
+            </center>
+          </div>
+        </div>
+       
       </form>
     </div>
     

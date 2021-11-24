@@ -2,8 +2,9 @@ import React from "react";
 import "./css/login.css";
 
 import shape from "./img/shape.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"; //routes
 
-import logo from "./img/logo.png";
 
 //LOG IN
 import avatar from "./img/avatar.svg";
@@ -22,7 +23,7 @@ function addcl(){
 
 function remcl(){
 	let parent = this.parentNode.parentNode;
-	if(this.value == ""){
+	if(this.value === ""){
 		parent.classList.remove("focus");
 	}
 }
@@ -32,50 +33,37 @@ inputs.forEach(input => {
 	input.addEventListener("focus", addcl);
 	input.addEventListener("blur", remcl);
 });
+
 function login(){
-    alert("ASdsadsa")
+  alert("ss")
 }
 
   return (
     <div>
-        <img src={shape} alt className="shape" />
-    <header>
-      <div className="containerhome">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
-          <h3>LOGIN ACCOUNT</h3>
-        </div>
-        <div className="linkshome">
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-            <a href="/register" >
-            <button type="button" className="btn btn-info" style={{backgroundColor:"5bacdf",color:"white"}}>Sign Up</button>
+        <a href="/">
+        <i
+          className="bi bi-caret-left-square-fill"
+          style={{ fontSize: "40px" ,float:"left",color:"#38d39f",paddingLeft:"5%"}}
+        ></i>
+     </a>
 
-            </a>
-            </li>
-          </ul>
-        </div>
-        <div className="overlay" />
-        <div className="hamburger-menu">
-          <div className="bar" />
-        </div>
-      </div>
-    </header>
-     <img className="wave" src={wave} />
-  <div className="container">
+    <img src={shape} alt="Logo" className="shape" />
+   
+     <img className="wave" alt="Logo" src={wave} />
+  <div className="container" style={{paddingBottom:"-80%",top:"0px"}}>
     <div className="img">
-      <img src={bg} />
+      <img src={bg} alt="Logo" />
     </div>
     <div className="login-content">
       <form action="index.html">
-        <img src={avatar} />
+        <img src={avatar} alt="Logo" />
         <h2 className="title">Welcome</h2>
+
+       
+
         <div className="input-div one">
           <div className="i">
-            <i className="fas fa-user" />
+            <i className="fa fa-envelope" />
           </div>
           <div className="div">
            
@@ -85,12 +73,11 @@ function login(){
 
         <div className="input-div pass">
           <div className="i">
-            <i className="fas fa-lock" />
+            <i className="fa fa-key" />
           </div>
           <div className="div">
-             
       
-            <input type="password" className="input"  placeholder="Password" />
+            <input type="password" className="input"  placeholder="Password"/>
             <br></br>
             <br></br>
             <br></br>
@@ -99,11 +86,9 @@ function login(){
             </center>
           </div>
         </div>
-
-     
+       
       </form>
     </div>
-    
     
   </div>
   

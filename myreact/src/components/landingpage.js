@@ -16,21 +16,21 @@ function landingpage() {
 
 <main>
   <div className="big-wrapper light">
-    <img src={shape} alt className="shape" />
+    <img src={shape} alt="Logo1" className="shape" />
     <header>
       <div className="containerhome">
         <div className="logo">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo2" />
           <h3>Borotoy branch</h3>
         </div>
         <div className="linkshome">
           <ul>
             <li>
-              <a href="/login">Sign In</a>
+              <a href="/register">Create account</a>
             </li>
             <li>
-            <a href="/register" >
-            <button type="button" className="btn btn-info" style={{backgroundColor:"5bacdf",color:"white"}}>Sign Up</button>
+            <a href="/login" >
+            <button type="button" className="btn btn-info" style={{backgroundColor:"5bacdf",color:"white"}}>Sign In</button>
 
             </a>
             </li>
@@ -61,7 +61,7 @@ function landingpage() {
           </div>
         </div>
         <div className="right">
-          <img src={person} alt="Person Image" className="person" />
+          <img src={person} alt="Person" className="person" />
         </div>
       </div>
     </div>

@@ -12,10 +12,10 @@ function Profile() {
   const onSubmitHandler = async (e) => {
     console.log(item)
     e.preventDefault();
-    if(item.title=="" ){
+    if(item.title==="" ){
     
       alert("Please add title!")
-    }else if(item.image==""){
+    }else if(item.image===""){
       alert("Please add image!")
       
     }
@@ -49,7 +49,7 @@ function Profile() {
 
           <div className="card" style={{ width: "40rem" }} key={item._id}>
           <center>
-            <img className="card-img-top" style={{ width: '50%', height: 300 }} src={item.image} alt="IMAGE POST" />
+            <img className="card-img-top" style={{ width: '50%', height: 300 }} src={item.image} alt="card" />
             </center>
             <div className="card-body">
               <h5 className="card-title">{item.title}</h5>
