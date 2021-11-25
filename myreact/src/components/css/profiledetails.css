@@ -1,0 +1,8 @@
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+.modal{
+    background-color: rgb(56, 211, 159);
+}
