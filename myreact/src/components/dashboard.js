@@ -5,9 +5,9 @@ import "./css/profiledetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; //routes
 
-import FileBase64 from 'react-file-base64';
-import { createItem, getItems } from '../functions';
-import { useEffect, useState } from 'react';
+import FileBase64 from "react-file-base64";
+import { createItem, getItems } from "../functions";
+import { useEffect, useState } from "react";
 ////TAB
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -174,11 +174,15 @@ function Dashboard(props) {
                   icon={<PersonPinIcon />}
                   {...a11yProps(0)}
                 />
-                <Tab label="About" icon={<FavoriteIcon />} {...a11yProps(1)} />
+                <Tab
+                  label="Experience"
+                  icon={<FavoriteIcon />}
+                  {...a11yProps(1)}
+                />
               </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-              <div className="card" style={{ width: "18rem" }}>
+              <div className="card" style={{ width: "22rem" }}>
                 <br></br>
                 <center>
                   <img
@@ -187,24 +191,29 @@ function Dashboard(props) {
                     alt=""
                   ></img>
                 </center>
-                <button
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#modalRegisterForm"
-                  className="btn btn-light"
-                  style={{
-                    width: "15%",
-                    height: "10%",
-                    backgroundImage:
-                      "linear-gradient(to right, #ffffff, #ffffff, #ffffff);",
-                    marginLeft: "10%",
-                  }}
-                >
-                  <i
-                    className="bi bi-pen"
-                    style={{ fontSize: "100%", float: "left", color: "black" }}
-                  ></i>
-                </button>
+                <center>
+                  <button
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#modalProfile"
+                    className="btn btn-light"
+                    style={{
+                      width: "12%",
+                      height: "10%",
+                      backgroundImage:
+                        "linear-gradient(to right, #ffffff, #ffffff, #ffffff);",
+                    }}
+                  >
+                    <i
+                      className="bi bi-pen"
+                      style={{
+                        fontSize: "100%",
+                        float: "left",
+                        color: "black",
+                      }}
+                    ></i>
+                  </button>
+                </center>
 
                 <div className="card-body">
                   <h5 className="card-title">Alan Running</h5>
@@ -213,107 +222,199 @@ function Dashboard(props) {
                     intertwined letters, “A” and “W”
                   </p>
                 </div>
-                <ul className="list-group list-group-flush">
+                <center>
                   <button
                     type="button"
-                    className="btn"
-                    style={{ width: "100%" }}
+                    data-toggle="modal"
+                    data-target="#modalSocialMedias"
+                    className="btn btn-light"
+                    style={{
+                      width: "12%",
+                      height: "10%",
+                      backgroundImage:
+                        "linear-gradient(to right, #ffffff, #ffffff, #ffffff);",
+                    }}
                   >
                     <i
-                      className="bi bi-facebook"
+                      className="bi bi-pen"
                       style={{
                         fontSize: "100%",
                         float: "left",
-                        paddingLeft: "5%",
                         color: "black",
                       }}
                     ></i>
-                    <i
-                      className="bi bi-instagram"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="bi bi-tiktok"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="bi bi-telegram"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="bi bi-linkedin"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="bi bi-youtube"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="fab fa-viber"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <i
-                      className="fa fa-globe"
-                      style={{
-                        fontSize: "100%",
-                        float: "left",
-                        paddingLeft: "5%",
-                        color: "black",
-                      }}
-                    ></i>
-                    <img
-                      src="https://img.icons8.com/plasticine/100/000000/gcash.png"
-                      style={{ width: "10%", marginLeft: "1%" }}
-                    />
                   </button>
-                </ul>
+                </center>
 
-                <ul className="list-group list-group-flush">
-                  <p>-------Contact---------</p>
-                  <a href="#" style={{ textAlign: "left", paddingLeft: "3%" }}>
-                    <i className="fa fa-globe"></i>
-                    <span> Some longer sample text</span>
-                  </a>
-                  <a href="#" style={{ textAlign: "left", paddingLeft: "3%" }}>
-                    <i className="fa fa-globe"></i>
-                    <span> Some longer sample text</span>
-                  </a>
-                </ul>
+                <div className="footer-social-icons">
+                  <ul
+                    className="social-icons"
+                    style={{ padding: "0", listStyle: "none" }}
+                  >
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-facebook" />
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-instagram" />
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-telegram" />
+                      </a>
+                    </li>
+
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-linkedin" />
+                      </a>
+                    </li>
+
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-youtube" />
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fab fa-viber viber" />
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fab fa-tiktok tiktok" />
+                      </a>
+                    </li>
+
+                    <li
+                      style={{
+                        verticalAlign: "top",
+                        display: "inline",
+                        height: "100px",
+                      }}
+                    >
+                      <a
+                        href
+                        className="social-icon"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          float: "left",
+                        }}
+                      >
+                        <i className="fa fa-glide-g" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <ul className="list-group list-group-flush"></ul>
 
                 {/* MODAL PROFILE DETAILS */}
                 <div
                   className="modal fade"
-                  id="modalRegisterForm"
+                  id="modalProfile"
                   tabIndex={-1}
                   role="dialog"
                   aria-labelledby="myModalLabel"
@@ -336,26 +437,24 @@ function Dashboard(props) {
                       </div>
                       <br></br>
                       <form action="" onSubmit={onSubmitHandler}>
-            
-                  <center>
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
-                    style={{ borderRadius: "50%", width: "46%" }}
-                    alt=""
-                  ></img>
-                  </center>
-                  <br></br>
-                  <br></br>
-              
-                        
-                      <FileBase64
-                        type="file"
-                        multiple={false}
-                        onDone={({ base64 }) => setItem({ ...item, image: base64 })}
-                      />
-                    
+                        <center>
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
+                            style={{ borderRadius: "50%", width: "46%" }}
+                            alt=""
+                          ></img>
+                        </center>
+                        <br></br>
+                        <br></br>
 
-                    </form>
+                        <FileBase64
+                          type="file"
+                          multiple={false}
+                          onDone={({ base64 }) =>
+                            setItem({ ...item, image: base64 })
+                          }
+                        />
+                      </form>
 
                       <br></br>
                       <div className="modal-body mx-3">
@@ -375,27 +474,341 @@ function Dashboard(props) {
                             class="form-control"
                             id="exampleFormControlTextarea1"
                             rows="3"
-                            style={{height:"auto"}}
+                            style={{ height: "auto" }}
                             defaultValue="The Alan Walker emblem is composed of two stylized intertwined letters, “A” and “W”"
                           ></textarea>
                         </div>
                       </div>
                       <div className="modal-footer d-flex justify-content-center">
-                        <button className="btn btn-deep-orange" style={{color:"black"}}>Save</button>
+                        <button
+                          className="btn btn-deep-orange"
+                          style={{ color: "black" }}
+                        >
+                          Save
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* END PROFILE DETAILS */}
+
+                {/* SOCIAL MEDIA MODALS */}
+
+                <div
+                  className="modal fade"
+                  id="modalSocialMedias"
+                  tabIndex={-1}
+                  role="dialog"
+                  aria-labelledby="myModalLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header text-center">
+                        <h4 className="modal-title w-100 font-weight-bold">
+                          Social Links
+                        </h4>
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <br></br>
+
+                      <form action="" onSubmit={onSubmitHandler}>
+                        <center>
+                          <div className="formsocials">
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="bi bi-facebook"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="awrawrwa">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="bi bi-instagram"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="bi bi-telegram"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="bi bi-linkedin"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="bi bi-youtube"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="fab fa-viber"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i className="fab fa-tiktok"></i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue="@"
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a href="#" style={{ textAlign: "left" }}>
+                                  <b>G-Cash</b>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                          </div>
+                        </center>
+
+                        <div className="modal-footer d-flex justify-content-center">
+                          <button
+                            className="btn btn-deep-orange"
+                            style={{ color: "black" }}
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                {/* END SOCIAL MEDIAS */}
               </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <div className="card" style={{ width: "18rem" }}>
-                <img className="card-img-top" src="..." alt="Card image cap" />
+          
+  
+     
+
+              <div className="card" style={{ width: "20rem" }}>
+                <img
+                  className="card-img-top"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
+                  alt="Card image cap"
+                />
                 <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text"></p>
+                  <h5 className="card-title"></h5>
+
+                  <button
+                    type="button"
+                    className="btn-labeledexperience btn-success btnstyle"
+                    data-toggle="collapse"
+                    data-target="#collapseExample"
+                    aria-expanded="false"
+                    aria-controls="collapseExample"                  >
+                    <span className="btn-labelexperience">
+                      <i className="fa fa-check"></i>
+                    </span>
+                    Experience{" "}
+                  </button>
+                  <div className="collapse" id="collapseExample">
+                  <div className="card-header">
+                    <span className="title">Title</span>{" "}
+                    <i className="fa fa-briefcase" aria-hidden="true"></i>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {" "}
+                      <p className="card-text">
+                        ssssssssssssssssssssssssssssssssssewqewqewqewq
+                      </p>
+                    </li>
+                  </ul>
+                  <div className="card-header">
+                    <span className="title">Company</span>{" "}
+                    <i className="fa fa-briefcase" aria-hidden="true"></i>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {" "}
+                      <p className="card-text">
+                        ssssssssssssssssssssssssssssssssssewqewqewqewq
+                      </p>
+                    </li>
+                  </ul>
+                  <div className="card-header">
+                    <span className="title">Website</span>{" "}
+                    <i className="fa fa-briefcase" aria-hidden="true"></i>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {" "}
+                      <p className="card-text">
+                        ssssssssssssssssssssssssssssssssssewqewqewqewq
+                      </p>
+                    </li>
+                  </ul>
+                  <div className="card-header">
+                    <span className="title">Office no.</span>{" "}
+                    <i className="fa fa-briefcase" aria-hidden="true"></i>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {" "}
+                      <p className="card-text">
+                        ssssssssssssssssssssssssssssssssssewqewqewqewq
+                      </p>
+                    </li>
+                  </ul>
+                  <div className="card-header">
+                    <span className="title">Address </span>{" "}
+                    <i className="fa fa-briefcase" aria-hidden="true"></i>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      {" "}
+                      <p className="card-text">
+                        ssssssssssssssssssssssssssssssssssewqewqewqewq
+                      </p>
+                    </li>
+                  </ul>
+                  
+                  </div>
                 </div>
               </div>
             </TabPanel>

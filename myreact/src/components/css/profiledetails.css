@@ -6,3 +6,213 @@
 .modal{
     background-color: rgb(56, 211, 159);
 }
+
+/* SOCIAL LINKS */
+
+*,
+*:focus{outline: none}
+
+.formsocials{
+  margin: 0 auto;
+  margin-top: 150px;
+  font-family: sans-serif;
+
+}
+.formsocials-item{
+  position: relative;
+  margin-bottom: 15px
+}
+.formsocials-item input{
+  display: block;
+  width: 400px;
+  height: 40px;
+  background: transparent;
+  border: solid 1px #ccc;
+  transition: all .3s ease;
+  padding: 0 15px
+}
+.formsocials-item input:focus{
+  border-color: blue
+}
+.formsocials-item label{
+  position: absolute;
+  cursor: text;
+  z-index: 2;
+  top: 13px;
+  left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+
+  padding: 0 10px;
+  color: #999;
+  transition: all .3s ease
+}
+.formsocials-item input:focus + label,
+.formsocials-item input:valid + label{
+  font-size: 11px;
+  top: -5px
+}
+.formsocials-item input:focus + label{
+  color: blue
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+body{
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin:  1% 0 1% 0;
+}
+._12 {
+    font-size: 1.2em;
+}
+._14 {
+    font-size: 1.4em;
+}
+
+.footer-social-icons {
+    width: 350px;
+    display:block;
+    margin: 0 auto;
+}
+.social-icon {
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-facebook:hover {
+    background-color: #0dcaf0;
+}
+.fa-instagram {
+    padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-instagram:hover {
+    background-color: #0dcaf0	;
+}
+.fa-telegram {
+     padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+
+}
+.fa-telegram:hover {
+    background-color: #0dcaf0;
+}
+.fa-youtube {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-youtube:hover {
+    background-color: #0dcaf0;
+}
+.fa-linkedin {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-linkedin:hover {
+    background-color: #0dcaf0;
+}
+.tiktok {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.tiktok:hover {
+    background-color:#0dcaf0;
+}
+.viber {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.viber:hover {
+    background-color: #0dcaf0;
+}
+.fa-glide-g {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-glide-g:hover {
+    background-color: #0dcaf0;
+}
+
+/* BUTTON EXPERIENCE */
+.btn-labelexperience {position: relative;left: -35px;display: inline-block;padding: 6px 7px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeledexperience {padding-top: 0;padding-bottom: 0;}
+.btnexperience { margin-bottom:10px; }
+.btnstyle{
+ 
+        display: block;
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        background-size: 200%;
+        font-size: 1.2rem;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+        margin: 1rem 0;
+        cursor: pointer;
+        transition: .5s;
+  
+}
+
+.title{
+    font-family: 'Poppins', sans-serif; 
+}
