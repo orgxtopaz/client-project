@@ -16,9 +16,10 @@ body{
 .wave{
 	position: fixed;
 	bottom: 0;
-	left: 0;
+	margin-left: -30%;
 	height: 100%;
 	z-index: -1;
+
 }
 
 .container{
@@ -111,7 +112,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
+	background-color: #0dcaf0;
 	transition: .4s;
 }
 
@@ -133,7 +134,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #38d39f;
+	color: #0dcaf0;
 }
 
 .input-div > div > input{
@@ -165,7 +166,7 @@ a{
 }
 
 a:hover{
-	color: #38d39f;
+	color: #0dcaf0;
 }
 
 .btn{

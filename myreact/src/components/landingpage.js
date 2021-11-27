@@ -4,9 +4,15 @@ import "./css/style.css"
 import shape from"./img/shape.png"
 import person from "./img/person.png";
 import logo from "./img/logo.png";
-function landingpage() {
+import { useHistory } from "react-router-dom"; // allows us to access our path / route history.
 
+function Landingpage() {
 
+let history =useHistory()
+///IF THE USER SUCCESSFULLY LOG IN , IT CANNOT GO BACK TO THE LOG IN PAGE
+if(localStorage.getItem('successLogin')!=null){
+  history.push("/dashboard")
+ }
 
         
 
@@ -87,4 +93,4 @@ function landingpage() {
 }
 
 
-export default landingpage
+export default Landingpage

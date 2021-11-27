@@ -7,6 +7,8 @@ import landingpage from "./components/landingpage";
 import register from "./components/register";
 import login from "./components/login";
 import dashboard from "./components/dashboard";
+import verify from "./components/verify";
+
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route exact path="/login" component={login} />
           <Route exact path="/dashboard" component={dashboard} />
           <Route exact path="/profile" component={profile} />
+          <Route exact path="/verify/:userId" component={verify} />
 
         </Router>
       </div>

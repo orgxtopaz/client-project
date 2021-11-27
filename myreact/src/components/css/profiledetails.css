@@ -216,3 +216,45 @@ h6 {
 .title{
     font-family: 'Poppins', sans-serif; 
 }
+
+.card-header+.list-group .list-group-item:first-child {
+    border-top: 0;
+    background-color: #0dcaf0;
+    color:white;
+    border-radius: 3%;
+ 
+    font-family: 'Poppins', sans-serif;
+}
+.contactText{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+
+}
+
+h5, p,input,textarea{
+    font-family: 'Poppins', sans-serif;
+   
+
+}
+
+.experienceText{
+    background-color: #0dcaf0;
+}
+.experienceText:hover{
+    background-color: white;
+    color:black;
+}
+
+
+.cardbg{
+    background-image: url("../img/card.svg");
+    background-repeat: no-repeat;
+
+    background-position: center;
+    background-size: cover;
+
+  
+}
+.show{
+    background-color: transparent;
+}

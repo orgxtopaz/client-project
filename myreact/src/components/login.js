@@ -4,14 +4,16 @@ import "./css/login.css";
 import shape from "./img/shape.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; //routes
+import { useHistory } from "react-router-dom"; // allows us to access our path / route history.
+import Axios from "axios"; //allows us to make GET and POST requests from the browser.
+import { useState } from "react"; //HERE we import useState Hook so we can add state to our functional components.
 
 
 //LOG IN
 import avatar from "./img/avatar.svg";
-import bg from "./img/bg.svg";
-import wave from "./img/wave.png";
+import bg from "./img/login.svg";
 
-function login() {
+function Login() {
 
     const inputs = document.querySelectorAll(".input");
 
@@ -34,22 +36,71 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
-function login(){
-  alert("ss")
+const [password, setPassword] = useState("");
+const [email, setEmail] = useState("");
+
+let history = useHistory();
+
+function loginNow(e){
+
+  e.preventDefault();
+
+  const data ={
+    password: password,
+    email: email
+    
 }
+
+Axios.post("http://localhost:5000/login",data)
+
+    .then(res =>{
+
+          //IF AUTH IS = TRUE comes from the backend!
+     if (res.data.auth){
+
+      console.log(res.data)
+      localStorage.setItem("successLogin", res.data.email);
+      localStorage.setItem("loginToken", res.data.token);
+
+      history.push(`/dashboard`); 
+
+      }
+  
+        
+      
+ 
+      
+
+    })
+     .catch(err =>{
+        alert(err.response.data.message)
+        
+   })
+
+
+}
+
+///IF THE USER SUCCESSFULLY LOG IN , IT CANNOT GO BACK TO THE LOG IN PAGE
+if(localStorage.getItem('successLogin')!=null){
+  history.push("/dashboard")
+ }
+
+
 
   return (
     <div>
         <a href="/">
         <i
           className="bi bi-caret-left-square-fill"
-          style={{ fontSize: "40px" ,float:"left",color:"#38d39f",paddingLeft:"5%"}}
+          style={{ fontSize: "40px" ,float:"left",color:"#0dcaf0",paddingLeft:"5%"}}
         ></i>
      </a>
+     <br></br>
+     <br></br>
+     
 
     <img src={shape} alt="Logo" className="shape" />
    
-     <img className="wave" alt="Logo" src={wave} />
   <div className="container" style={{paddingBottom:"-80%",top:"0px"}}>
     <div className="img">
       <img src={bg} alt="Logo" />
@@ -67,7 +118,8 @@ function login(){
           </div>
           <div className="div">
            
-            <input type="email" className="input" placeholder="Email Address" />
+            <input type="email" className="input" placeholder="Email Address" onChange={(event) => {
+                          setEmail(event.target.value)}} />
           </div>
         </div>
 
@@ -77,12 +129,13 @@ function login(){
           </div>
           <div className="div">
       
-            <input type="password" className="input"  placeholder="Password"/>
+            <input type="password" className="input"  placeholder="Password" onChange={(event) => {
+                                  setPassword(event.target.value)}}/>
             <br></br>
             <br></br>
             <br></br>
             <center>
-            <button type="button" className="btn btn-info " onClick={login} style={{backgroundColor:"5bacdf",color:"white"}}>Log in</button>
+            <button type="button" className="btn btn-info " onClick={loginNow} style={{backgroundColor:"5bacdf",color:"white"}}>Log in</button>
             </center>
           </div>
         </div>
@@ -96,4 +149,4 @@ function login(){
   );
 }
 
-export default login;
+export default Login;

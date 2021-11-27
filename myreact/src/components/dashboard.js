@@ -24,8 +24,10 @@ import ThumbUp from "@material-ui/icons/ThumbUp";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import bg from "./img/bg.svg";
-import wave from "./img/wave.png";
+import bg from "./img/dashboard.svg";
+import wave from "./img/wave.svg";
+
+import { useHistory } from "react-router-dom"; // allows us to access our path / route history.
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -135,15 +137,31 @@ function Dashboard(props) {
 
   ///END PROFILE DETAILS FUNCTION
 
+
+  ///AUTHORIZATION
+
+  let history = useHistory();
+  if(localStorage.getItem('successLogin')==null){
+    history.push("/login")
+   }
+
+  const logoutNow =()=>{
+    localStorage.removeItem("successLogin")
+    localStorage.removeItem("loginToken");
+    
+  }
+
+   
+
   return (
     <div>
-      <a href="/">
+      <a href="#" onClick={logoutNow}>
         <i
-          className="bi bi-caret-left-square-fill"
+          className="fa fa-sign-out"
           style={{
             fontSize: "40px",
             float: "left",
-            color: "#38d39f",
+            color: "#0dcaf0",
             paddingLeft: "5%",
           }}
         ></i>
@@ -152,7 +170,7 @@ function Dashboard(props) {
       <img className="wave" alt="Logo" src={wave} />
       <div className="container" style={{ paddingBottom: "-80%", top: "0px" }}>
         <div className="img">
-          <img src={bg} alt="Logo" />
+          {/* <img src={bg} alt="Logo" /> */}
         </div>
 
         {/* TAB */}
@@ -166,7 +184,7 @@ function Dashboard(props) {
                 variant="scrollable"
                 scrollButtons="on"
                 indicatorColor="primary"
-                textColor="primary"
+                textColor="black"
                 aria-label="scrollable force tabs example"
               >
                 <Tab
@@ -182,7 +200,7 @@ function Dashboard(props) {
               </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-              <div className="card" style={{ width: "22rem" }}>
+              <div className="card cardbg" style={{ width: "22rem" } }>
                 <br></br>
                 <center>
                   <img
@@ -202,7 +220,9 @@ function Dashboard(props) {
                       height: "10%",
                       backgroundImage:
                         "linear-gradient(to right, #ffffff, #ffffff, #ffffff);",
+                      
                     }}
+                   
                   >
                     <i
                       className="bi bi-pen"
@@ -210,18 +230,23 @@ function Dashboard(props) {
                         fontSize: "100%",
                         float: "left",
                         color: "black",
+                    
+
                       }}
                     ></i>
                   </button>
                 </center>
 
                 <div className="card-body">
-                  <h5 className="card-title">Alan Running</h5>
-                  <p className="card-text text-muted">
-                    The Alan Walker emblem is composed of two stylized
-                    intertwined letters, “A” and “W”
+                  <h5 className="card-title" style={{paddingTop:"3%"}}>Alan Running</h5>
+                  <p className="card-text " style={{textAlign:"justify"}}>
+                  The Alan Walker emblem is composed of two stylized intertwined letters. The Alan Walker emblem is composed of two stylized intertwined letters.
                   </p>
                 </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <center>
                   <button
                     type="button"
@@ -245,7 +270,7 @@ function Dashboard(props) {
                     ></i>
                   </button>
                 </center>
-
+               <br></br> <br></br>
                 <div className="footer-social-icons">
                   <ul
                     className="social-icons"
@@ -518,7 +543,7 @@ function Dashboard(props) {
                           <span aria-hidden="true">×</span>
                         </button>
                       </div>
-                      <br></br>
+                      
 
                       <form action="" onSubmit={onSubmitHandler}>
                         <center>
@@ -529,7 +554,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -552,7 +577,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="awrawrwa">
@@ -574,7 +599,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -597,7 +622,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -620,7 +645,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -643,7 +668,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -666,7 +691,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -690,7 +715,7 @@ function Dashboard(props) {
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue="@"
+                                defaultValue=""
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -718,101 +743,434 @@ function Dashboard(props) {
                 </div>
 
                 {/* END SOCIAL MEDIAS */}
+
+
+              
               </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-          
-  
-     
 
-              <div className="card" style={{ width: "20rem" }}>
+
+
+
+              <div className="card cardbg" style={{ width: "20rem" }}>
+                <center>
                 <img
                   className="card-img-top"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
                   alt="Card image cap"
+                  style={{ borderRadius: "50%", width: "46%" }}
                 />
+                </center>
                 <div className="card-body">
                   <h5 className="card-title"></h5>
 
                   <button
                     type="button"
-                    className="btn-labeledexperience btn-success btnstyle"
+                    className="btn-labeledexperience  btnstyle experienceText"
                     data-toggle="collapse"
                     data-target="#collapseExample"
                     aria-expanded="false"
-                    aria-controls="collapseExample"                  >
+                    aria-controls="collapseExample" >
                     <span className="btn-labelexperience">
-                      <i className="fa fa-check"></i>
+                      <i className="fa fa-hand-pointer-o"></i>
                     </span>
                     Experience{" "}
                   </button>
+                  <button
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#experienceModal"
+                    className="btn btn-light"
+                    style={{
+                      width: "15%",
+                      height: "10%",
+                      backgroundImage:
+                        "linear-gradient(to right, #ffffff, #ffffff, #ffffff);",
+                    }}
+                  >
+                    <i
+                      className="bi bi-pen"
+                      style={{
+                        fontSize: "100%",
+                        float: "left",
+                        color: "black",
+                      }}
+                    ></i>
+                  </button>
+
                   <div className="collapse" id="collapseExample">
-                  <div className="card-header">
-                    <span className="title">Title</span>{" "}
-                    <i className="fa fa-briefcase" aria-hidden="true"></i>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      {" "}
-                      <p className="card-text">
-                        ssssssssssssssssssssssssssssssssssewqewqewqewq
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="card-header">
-                    <span className="title">Company</span>{" "}
-                    <i className="fa fa-briefcase" aria-hidden="true"></i>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      {" "}
-                      <p className="card-text">
-                        ssssssssssssssssssssssssssssssssssewqewqewqewq
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="card-header">
-                    <span className="title">Website</span>{" "}
-                    <i className="fa fa-briefcase" aria-hidden="true"></i>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      {" "}
-                      <p className="card-text">
-                        ssssssssssssssssssssssssssssssssssewqewqewqewq
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="card-header">
-                    <span className="title">Office no.</span>{" "}
-                    <i className="fa fa-briefcase" aria-hidden="true"></i>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      {" "}
-                      <p className="card-text">
-                        ssssssssssssssssssssssssssssssssssewqewqewqewq
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="card-header">
-                    <span className="title">Address </span>{" "}
-                    <i className="fa fa-briefcase" aria-hidden="true"></i>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      {" "}
-                      <p className="card-text">
-                        ssssssssssssssssssssssssssssssssssewqewqewqewq
-                      </p>
-                    </li>
-                  </ul>
                   
+                    <div className="card-header">
+                      <span className="title">~Title~</span>{" "}
+                     
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text" >
+                          Smartest Name Card                     
+
+                      </p>
+                      </li>
+                    </ul>
+                    <div className="card-header">
+                      <span className="title">~Company~</span>{" "}
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text">
+                          One Good Team
+
+                      </p>
+                      </li>
+                    </ul>
+                    <div className="card-header">
+                      <span className="title">~Website~</span>{" "}
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text">
+                          https://onegoodcard.com/
+                      </p>
+                      </li>
+                    </ul>
+                    <div className="card-header">
+                      <span className="title">~Office no.~</span>{" "}
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text">
+                          +65 61234567
+                      </p>
+                      </li>
+                    </ul>
+                    <div className="card-header">
+                      <span className="title">~Address~ </span>{" "}
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text">
+                          73 Ayer Rajah Crescent, #03-28, Singapore 139952 #03-28
+                      </p>
+                      </li>
+                    </ul>
+
                   </div>
                 </div>
               </div>
+
+              <p className="contactText">★━━━━━━━━━━CONTACT━━━━━━━━━━★</p>
+
+
+              <div className="formsocials-item">
+                <input
+                  type="text"
+                  id="username"
+                  autoComplete="off"
+                  value="https://onegoodcard.com/"
+                  className="contactText"
+                  readOnly
+
+                  style={{width:"50%" }}
+                />
+                <label htmlFor="wqewqewq" style={{    paddingLeft: "13%"}}>
+                  {" "}
+                  <a
+                    href="#"
+                    style={{
+                      textAlign: "left",
+                      paddingLeft: "3%",
+                    }}
+                  >
+                    <i className="fa fa-globe " style={{fontSize:"1.6rem"}}></i>
+                  </a>
+                </label>
+              </div>
+              <div className="formsocials-item">
+                <input
+                  type="text"
+                  id="username"
+                  autoComplete="off"
+                  className="contactText"
+                  value="hello@onegood.team"
+                  readOnly
+
+                  style={{ width:"50%" }}
+                />
+                <label htmlFor="wqewqewq" style={{    paddingLeft: "13%"}}>
+                  {" "}
+                  <a
+                    href="#"
+                    style={{
+                      textAlign: "left",
+                      paddingLeft: "3%",
+                    }}
+                  >
+                    <i className="fa fa-envelope " style={{fontSize:"1.6rem"}}></i>
+                  </a>
+                </label>
+              </div>
+
+              <div className="formsocials-item">
+                <input
+                  type="text"
+                  id="username"
+                  autoComplete="off"
+                  className="contactText"
+                  value="+65 81234567"
+                  readOnly
+
+                  style={{ width:"50%" }}
+                />
+                <label htmlFor="wqewqewq" style={{    paddingLeft: "13%"}}>
+                  {" "}
+                  <a
+                    href="#"
+                    style={{
+                      textAlign: "left",
+                      paddingLeft: "3%",
+                    }}
+                  >
+                    <i className="fa fa-phone " style={{fontSize:"1.6rem"}}></i>
+                  </a>
+                </label>
+              </div>
+
             </TabPanel>
           </div>
+            {/* EXPERIENCE MODAL */}
+            <div
+                  className="modal fade"
+                  id="experienceModal"
+                  tabIndex={-1}
+                  role="dialog"
+                  aria-labelledby="myModalLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header text-center">
+                        <h4 className="modal-title w-100 font-weight-bold">
+                          Edit Experience
+                        </h4>
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      
+
+                      <form action="" onSubmit={onSubmitHandler}>
+                        <center>
+                          <div className="formsocials">
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                  <i>Title</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="awrawrwa">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                     <i>Company</i>
+                                </a>
+                              </label>
+                            </div>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                     <i>Website</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "-7%",
+                                  }}
+                                >
+                                 <i>Office No.</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                 <i>Address</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <p>★━━━━━━━━━━ YOUR CONTACT━━━━━━━━━━★</p>
+
+
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "3%",
+                                  }}
+                                >
+                                   <i>Website</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a
+                                  href="#"
+                                  style={{
+                                    textAlign: "left",
+                                    paddingLeft: "-5%",
+                                  }}
+                                >
+                                          <i>E-Mail</i>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+
+                            <div className="formsocials-item">
+                              <input
+                                type="text"
+                                id="username"
+                                autoComplete="off"
+                                required
+                                defaultValue=""
+                                style={{ paddingLeft: "10%" }}
+                              />
+                              <label htmlFor="wqewqewq">
+                                {" "}
+                                <a href="#" style={{ textAlign: "left" }}>
+                                  <b>Contact No.</b>
+                                </a>
+                              </label>
+                            </div>
+                            <br></br>
+                          </div>
+                        </center>
+
+                        <div className="modal-footer d-flex justify-content-center">
+                          <button
+                            className="btn btn-deep-orange"
+                            style={{ color: "black" }}
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+
+                {/* END EXPERIENCE MODAL */}
         </center>
         {/* TAB END */}
       </div>
