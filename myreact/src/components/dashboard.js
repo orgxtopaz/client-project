@@ -28,6 +28,9 @@ import bg from "./img/dashboard.svg";
 import wave from "./img/wave.svg";
 
 import { useHistory } from "react-router-dom"; // allows us to access our path / route history.
+import Axios from "axios"; //allows us to make GET and POST requests from the browser.
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,6 +77,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard(props) {
+
+
+  ///USER ID PER LOG IN 
+  const userId = localStorage.getItem("userId");
+
+
+
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -104,38 +114,8 @@ function Dashboard(props) {
     input.addEventListener("blur", remcl);
   });
 
-  function register() {
-    alert("ss");
-  }
-
-  // PROFILE DETAILS FUNCTION
-
-  const [item, setItem] = useState({ title: "", image: "" });
-  const [items, setItems] = useState([]);
-  const onSubmitHandler = async (e) => {
-    console.log(item);
-    e.preventDefault();
-    if (item.title === "") {
-      alert("Please add title!");
-    } else if (item.image === "") {
-      alert("Please add image!");
-    } else {
-      const result = await createItem(item);
-
-      setItems([...items, result]);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getItems();
-      console.log("fetch data;m", result);
-      setItems(result);
-    };
-    fetchData();
-  }, []);
-
-  ///END PROFILE DETAILS FUNCTION
+  
+ 
 
 
   ///AUTHORIZATION
@@ -151,10 +131,101 @@ function Dashboard(props) {
     
   }
 
+
+  ///FETCHING USER PROFILE
+  /////FETCHING THE OFFICIAL ATTENDANCE DATA SPECIFIC
+
+
+  
+    const [profileDetails, setprofileDetails] = useState([]);
+
+
+   
+        Axios.get(`http://localhost:5000/getprofileDetails/${userId}`, 
+  
+        { headers: { "x-access-token":localStorage.getItem('loginToken') },email:localStorage.getItem("successLogin")}
+        
+        )
+      
+        
+        .then((res) => {
+          // setprofileDetails(response.data.response);
+          setprofileDetails(res.data);
+
+
+  
+       
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+      
+   
+
+
+
+///UPDATING PROFILE DETAILS
+const [bio, setBio] = useState([]);
+const [fullname, setFullname] = useState([]);
+const [image, setImage] = useState([]);
+
+const updateprofileDetails = ()=>{
+
+  Axios.put(`http://localhost:5000/updateprofileDetails/${userId}`, 
+  
+  {
+    
+    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    email:localStorage.getItem("successLogin"),
+    bio:bio,
+    fullname:fullname,
+    image:image
+ 
+  }
+  
+  )
+
+  
+  .then((response) => {
+    setprofileDetails(response.data);
+
+ 
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+
+
+
+
+
+}
+
+///END PROFILE DETAILS
+
+
+
+//////SETTING DEFAULT VALUES OF FIELD WHICH IS EMPTY
+
+if(image==null) {
+  
+}
+
+
    
 
   return (
-    <div>
+   
+
+    <div>        
+   {/* {profileDetails?.map(about => ( */}
+   {/* {profileDetails.map(result => (
+     <p>{result.fullname}</p>
+   ))} */}
+
+  <>
+   
       <a href="#" onClick={logoutNow}>
         <i
           className="fa fa-sign-out"
@@ -167,11 +238,16 @@ function Dashboard(props) {
         ></i>
       </a>
 
+        
+
+
       <img className="wave" alt="Logo" src={wave} />
       <div className="container" style={{ paddingBottom: "-80%", top: "0px" }}>
+     
         <div className="img">
           {/* <img src={bg} alt="Logo" /> */}
         </div>
+        
 
         {/* TAB */}
 
@@ -200,11 +276,12 @@ function Dashboard(props) {
               </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
+
               <div className="card cardbg" style={{ width: "22rem" } }>
                 <br></br>
                 <center>
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
+                    src={profileDetails.image}
                     style={{ borderRadius: "50%", width: "46%" }}
                     alt=""
                   ></img>
@@ -238,9 +315,9 @@ function Dashboard(props) {
                 </center>
 
                 <div className="card-body">
-                  <h5 className="card-title" style={{paddingTop:"3%"}}>Alan Running</h5>
+                  <h5 className="card-title" style={{paddingTop:"3%"}}>{localStorage.getItem("fullname")}</h5>
                   <p className="card-text " style={{textAlign:"justify"}}>
-                  The Alan Walker emblem is composed of two stylized intertwined letters. The Alan Walker emblem is composed of two stylized intertwined letters.
+                    {profileDetails.bio}
                   </p>
                 </div>
                 <br></br>
@@ -461,7 +538,7 @@ function Dashboard(props) {
                         </button>
                       </div>
                       <br></br>
-                      <form action="" onSubmit={onSubmitHandler}>
+                      <form action="" >
                         <center>
                           <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
@@ -476,10 +553,9 @@ function Dashboard(props) {
                           type="file"
                           multiple={false}
                           onDone={({ base64 }) =>
-                            setItem({ ...item, image: base64 })
+                            setImage({ image: base64 })
                           }
                         />
-                      </form>
 
                       <br></br>
                       <div className="modal-body mx-3">
@@ -489,18 +565,21 @@ function Dashboard(props) {
                             type="text"
                             id="orangeForm-name"
                             className="form-control validate"
-                            defaultValue="Alan Running"
+            
+                            onChange={(event) => {
+                              setFullname(event.target.value)}}
                           />
                         </div>
 
                         <div className="md-form mb-4">
                           <i className="bi bi-blockquote-right  prefix grey-text" />
                           <textarea
+                           onChange={(event) => {
+                            setBio(event.target.value)}}
                             class="form-control"
                             id="exampleFormControlTextarea1"
                             rows="3"
                             style={{ height: "auto" }}
-                            defaultValue="The Alan Walker emblem is composed of two stylized intertwined letters, “A” and “W”"
                           ></textarea>
                         </div>
                       </div>
@@ -508,10 +587,16 @@ function Dashboard(props) {
                         <button
                           className="btn btn-deep-orange"
                           style={{ color: "black" }}
+                          onClick={updateprofileDetails}
                         >
                           Save
                         </button>
                       </div>
+
+                        
+                      </form>
+
+                    
                     </div>
                   </div>
                 </div>
@@ -545,7 +630,7 @@ function Dashboard(props) {
                       </div>
                       
 
-                      <form action="" onSubmit={onSubmitHandler}>
+                      <form action="" >
                         <center>
                           <div className="formsocials">
                             <div className="formsocials-item">
@@ -969,7 +1054,7 @@ function Dashboard(props) {
                       </div>
                       
 
-                      <form action="" onSubmit={onSubmitHandler}>
+                      <form action="" >
                         <center>
                           <div className="formsocials">
                             <div className="formsocials-item">
@@ -1169,12 +1254,14 @@ function Dashboard(props) {
                   </div>
                 </div>
 
-
                 {/* END EXPERIENCE MODAL */}
         </center>
         {/* TAB END */}
+       
       </div>
+      </>
     </div>
+    
   );
 }
 

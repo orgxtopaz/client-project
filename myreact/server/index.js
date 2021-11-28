@@ -77,13 +77,45 @@ app.post(
         const serial ="123";
 
         if(req.body.serial==serial){
-          const fullname = req.body.fullname;
           const email = req.body.email;
           const password = req.body.password;
           const verified = "false";
           const code = Math.floor(100000 + Math.random() * 900000);
 
-        //    ///SEND CODE TO USER EMAIL REGISTERED!
+          ////PROFILE
+
+          const fullname = req.body.fullname;
+          const image = "";
+          const bio = "";
+          
+          ////SOCIAL LINKS
+          const fb = "";
+          const instagram = "";
+          const telegram = "";
+          const linkedin = "";
+          const youtube = "";
+          const viber = "";
+          const tiktok = "";
+          const gcash = "";
+
+
+         ////EXPERIENCES
+          const title = "";
+          const company = "";
+          const website = "";
+          const officeno = "";
+          const address = "";
+
+          ///CONTACT
+          const contactWebsite = "";
+          const contactNumber = "";
+        
+
+
+        
+     
+        
+          ///SEND CODE TO USER EMAIL REGISTERED!
         const nodemailer = require('nodemailer');
 
 
@@ -114,6 +146,23 @@ app.post(
 
           
         const newUser = new User({
+          address,
+          officeno,
+          website,
+          company,
+          title,
+          gcash,
+          contactWebsite,
+          contactNumber,
+          tiktok,
+          viber,
+          youtube,
+          linkedin,
+          telegram,
+          instagram,
+          fb,
+          bio,
+          image,
           fullname,
           email,  
           password,
@@ -201,7 +250,7 @@ app.post('/login',(req,res)=>{
           })
          
   
-          res.json({ auth: true, token: token, email:user[0].email })
+          res.json({ auth: true, token: token, email:user[0].email,userId:user[0]._id,fullname:user[0].fullname })
   
         } else {
           res.status(400).json({ auth: false, message: "User didn't exist! Create Account Now" })
@@ -211,6 +260,71 @@ app.post('/login',(req,res)=>{
   
 
 })
+
+
+//MAKING FUNCTIONS TO VERIFY IF USER IS AUTHORIZED WITH THE VALID TOKEN
+///SECURITY SO THAT DATA COULD NOT BE DISPLAY IF USER IS NOT LOG IN AND AUTHORIZE
+const verifyJWT = (req, res, next) => {
+  const token = req.headers["x-access-token"]
+
+  if (!token) {
+    res.send("YOU ARE NOT AUTHORIZED MADAPAKER!!")
+  } else {
+    jwt.verify(token, "jwtSecret", (err, decoded) => {
+      if (err) {
+        res.json({ auth: false, message: "You are not Authenticated!" })
+      } else {
+        req.userId = decoded.id;
+        next();
+      }
+    })
+  }
+
+}
+
+
+///GET PROFILE DETAILS
+
+app.get("/getprofileDetails/:id",(req, res, next) => {
+  
+  User.findById(req.params.id)
+  .then((user) => res.status(200).json(user)) // IF TRUE CHECK
+  .catch((err) => res.status(400).json("Error : " + err)); // IF ERROR
+
+}
+);
+
+
+
+
+////ADD PROFILE Details
+app.put("/updateprofileDetails/:id",(req, res, next) => {
+  
+        User.findById(req.params.id)
+          .then((user) => {
+
+            user.bio = req.body.bio;
+            user.fullname = req.body.fullname;
+            user.image = req.body.image;
+
+            user.save()
+
+              .then((user) => res.json(user))
+              .catch((err) => res.status(400).json("Error: " + err));
+          })
+          .catch((err) => res.status(400).json("Error: " + err));
+    
+    
+  }
+);
+
+
+
+
+
+
+
+
 
 
 

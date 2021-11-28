@@ -61,6 +61,9 @@ Axios.post("http://localhost:5000/login",data)
       console.log(res.data)
       localStorage.setItem("successLogin", res.data.email);
       localStorage.setItem("loginToken", res.data.token);
+      localStorage.setItem("userId", res.data.userId);
+      localStorage.setItem("fullname", res.data.fullname);
+
 
       history.push(`/dashboard`); 
 
@@ -119,7 +122,7 @@ if(localStorage.getItem('successLogin')!=null){
           <div className="div">
            
             <input type="email" className="input" placeholder="Email Address" onChange={(event) => {
-                          setEmail(event.target.value)}} />
+                          setEmail(event.target.value)}} required />
           </div>
         </div>
 
@@ -130,7 +133,7 @@ if(localStorage.getItem('successLogin')!=null){
           <div className="div">
       
             <input type="password" className="input"  placeholder="Password" onChange={(event) => {
-                                  setPassword(event.target.value)}}/>
+                                  setPassword(event.target.value)}} required />
             <br></br>
             <br></br>
             <br></br>
