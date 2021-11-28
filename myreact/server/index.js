@@ -85,8 +85,8 @@ app.post(
           ////PROFILE
 
           const fullname = req.body.fullname;
-          const image = "";
-          const bio = "";
+          const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&usqp=CAU";
+          const bio = "bio";
           
           ////SOCIAL LINKS
           const fb = "";
@@ -285,7 +285,7 @@ const verifyJWT = (req, res, next) => {
 
 ///GET PROFILE DETAILS
 
-app.get("/getprofileDetails/:id",(req, res, next) => {
+app.get("/getprofileDetails/:id",verifyJWT,(req, res, next) => {
   
   User.findById(req.params.id)
   .then((user) => res.status(200).json(user)) // IF TRUE CHECK
@@ -299,18 +299,33 @@ app.get("/getprofileDetails/:id",(req, res, next) => {
 
 ////ADD PROFILE Details
 app.put("/updateprofileDetails/:id",(req, res, next) => {
+  let bio = req.body.bio;
+  let image = req.body.image;
+  let fullname = req.body.fullname;
   
         User.findById(req.params.id)
           .then((user) => {
 
-            user.bio = req.body.bio;
-            user.fullname = req.body.fullname;
-            user.image = req.body.image;
+            ///CHECKING THE CHANGES AND APPLY
+            if(bio==""){
+              bio+=user.bio
+
+            }if(image==""){
+              image+=user.image
+            }if(fullname==""){
+              fullname+=user.fullname
+            }
+
+
+
+            user.bio = bio;
+            user.image = image;
+            user.fullname = fullname;
 
             user.save()
 
               .then((user) => res.json(user))
-              .catch((err) => res.status(400).json("Error: " + err));
+              .catch((err) => res.status(400).json(err));
           })
           .catch((err) => res.status(400).json("Error: " + err));
     

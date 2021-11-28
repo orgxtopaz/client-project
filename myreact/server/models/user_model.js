@@ -40,21 +40,20 @@ const userSchema = new Schema({
     ////////////////////////////////////////////////////////////////
 
     image:{
-        type:String,
+   
+            type: String,
+       
         required:false,
-        trim:true  // removing the first space in value input 
 
     },
     fullname:{
         type:String,
-        required:true,
         trim:true  // removing the first space in value input 
 
     },
     bio:{
 
         type:String,
-        required:false,
         trim:true , // removing the first space in value input   
 
     },

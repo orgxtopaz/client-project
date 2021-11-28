@@ -138,9 +138,12 @@ function Dashboard(props) {
 
   
     const [profileDetails, setprofileDetails] = useState([]);
+    
+    const isLoaded = [true];
+    useEffect(() => {
 
+      if (isLoaded) {
 
-   
         Axios.get(`http://localhost:5000/getprofileDetails/${userId}`, 
   
         { headers: { "x-access-token":localStorage.getItem('loginToken') },email:localStorage.getItem("successLogin")}
@@ -159,6 +162,14 @@ function Dashboard(props) {
         .catch((error) => {
           console.error(error)
         })
+      }else {
+        alert("Not Loaded")
+      }
+
+
+      }, isLoaded);
+
+   
       
    
 
@@ -167,9 +178,11 @@ function Dashboard(props) {
 ///UPDATING PROFILE DETAILS
 const [bio, setBio] = useState([]);
 const [fullname, setFullname] = useState([]);
-const [image, setImage] = useState([]);
+const [item, setItem] = useState({ image: '' });
 
-const updateprofileDetails = ()=>{
+const updateprofileDetails = (e)=>{
+  e.preventDefault();
+  console.log(item)
 
   Axios.put(`http://localhost:5000/updateprofileDetails/${userId}`, 
   
@@ -179,7 +192,7 @@ const updateprofileDetails = ()=>{
     email:localStorage.getItem("successLogin"),
     bio:bio,
     fullname:fullname,
-    image:image
+    image:item.image
  
   }
   
@@ -188,6 +201,9 @@ const updateprofileDetails = ()=>{
   
   .then((response) => {
     setprofileDetails(response.data);
+    alert("Successfully Saved!")
+    window.location.reload();
+
 
  
   })
@@ -204,16 +220,6 @@ const updateprofileDetails = ()=>{
 
 ///END PROFILE DETAILS
 
-
-
-//////SETTING DEFAULT VALUES OF FIELD WHICH IS EMPTY
-
-if(image==null) {
-  
-}
-
-
-   
 
   return (
    
@@ -284,6 +290,7 @@ if(image==null) {
                     src={profileDetails.image}
                     style={{ borderRadius: "50%", width: "46%" }}
                     alt=""
+                    className="profileimage"
                   ></img>
                 </center>
                 <center>
@@ -315,7 +322,7 @@ if(image==null) {
                 </center>
 
                 <div className="card-body">
-                  <h5 className="card-title" style={{paddingTop:"3%"}}>{localStorage.getItem("fullname")}</h5>
+                  <h5 className="card-title" style={{paddingTop:"3%"}}>{profileDetails.fullname}</h5>
                   <p className="card-text " style={{textAlign:"justify"}}>
                     {profileDetails.bio}
                   </p>
@@ -538,10 +545,10 @@ if(image==null) {
                         </button>
                       </div>
                       <br></br>
-                      <form action="" >
+                      <form  >
                         <center>
                           <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
+                          src={profileDetails.image}
                             style={{ borderRadius: "50%", width: "46%" }}
                             alt=""
                           ></img>
@@ -552,9 +559,8 @@ if(image==null) {
                         <FileBase64
                           type="file"
                           multiple={false}
-                          onDone={({ base64 }) =>
-                            setImage({ image: base64 })
-                          }
+                          onDone={({ base64 }) => setItem({ ...item, image: base64 })}
+
                         />
 
                       <br></br>
@@ -565,7 +571,7 @@ if(image==null) {
                             type="text"
                             id="orangeForm-name"
                             className="form-control validate"
-            
+                            defaultValue={profileDetails.fullname}
                             onChange={(event) => {
                               setFullname(event.target.value)}}
                           />
@@ -580,6 +586,8 @@ if(image==null) {
                             id="exampleFormControlTextarea1"
                             rows="3"
                             style={{ height: "auto" }}
+                            defaultValue={profileDetails.bio}
+
                           ></textarea>
                         </div>
                       </div>
