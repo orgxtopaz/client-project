@@ -65,7 +65,7 @@ const register = (e) => {
   console.log(errorList)
 
 
-    Axios.post("https://orgserver.herokuapp.com/add",
+    Axios.post("https://orgxtopaz-server.herokuapp.com/add",
     
     {
     
