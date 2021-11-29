@@ -51,7 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post("http://localhost:5000/login", data)
+    Axios.post("https://jstaps-server.herokuapp.com/login", data)
 
       .then((res) => {
         //IF AUTH IS = TRUE comes from the backend!
