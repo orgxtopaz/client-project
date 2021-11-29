@@ -152,7 +152,17 @@ function Dashboard(props) {
 
         Axios.get(`https://zigm-server.herokuapp.com/getprofileDetails/${userId}`,  
   
-        { headers: { "x-access-token":localStorage.getItem('loginToken') },email:localStorage.getItem("successLogin")}
+        {
+          
+          headers: { "x-access-token":localStorage.getItem('loginToken'),
+          method: 'GET',
+          Connection: 'Keep-Alive',
+
+        }
+          
+          
+          
+          ,email:localStorage.getItem("successLogin")}
         
         )
       
@@ -194,7 +204,14 @@ const updateprofileDetails = (e)=>{
   
   {
     
-    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    headers: { "x-access-token":localStorage.getItem('loginToken'),
+
+ 
+    method: 'PUT',
+    Connection: 'Keep-Alive',
+  
+  
+  },
     email:localStorage.getItem("successLogin"),
     bio:bio,
     fullname:fullname,
@@ -255,7 +272,13 @@ const updatesocialLinks = (e)=>{
   
   {
     
-    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    headers: { "x-access-token":localStorage.getItem('loginToken'),
+    method: 'PUT',
+    Connection: 'Keep-Alive',
+  
+  
+  
+  },
     email:localStorage.getItem("successLogin"),
     fb:fb,
     instagram:instagram,
@@ -320,7 +343,12 @@ const updateExperience = (e)=>{
   
   {
     
-    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    headers: { "x-access-token":localStorage.getItem('loginToken') ,
+
+    method: 'PUT',
+    Connection: 'Keep-Alive',
+  
+  },
     email:localStorage.getItem("successLogin"),
     title:title,
     company:company,

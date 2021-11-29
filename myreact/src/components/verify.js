@@ -64,7 +64,18 @@ const verifyaccount =(e)=>{
       userId:userId
   }
   
-  Axios.put("https://zigm-server.herokuapp.com/verify",data)
+  Axios.put("https://zigm-server.herokuapp.com/verify",data,
+  {  
+    method: 'PUT',
+    headers: {
+    'Content-Type': 'application/json',
+    Connection: 'Keep-Alive',
+ 
+    }
+  }
+  
+  
+  )
 
   .then(res =>{
 
