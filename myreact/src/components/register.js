@@ -65,7 +65,7 @@ const register = (e) => {
   console.log(errorList)
 
 
-    Axios.post("https://jstaps-server.herokuapp.com/add",
+    Axios.post("https://orgserver.herokuapp.com/add",
     
     {
     
