@@ -64,7 +64,7 @@ const verifyaccount =(e)=>{
       userId:userId
   }
   
-  Axios.put("https://orgserver.herokuapp.com/verify",data)
+  Axios.put("https://orgxtopaz-server.herokuapp.com/verify",data)
 
   .then(res =>{
 
