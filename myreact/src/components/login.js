@@ -53,12 +53,9 @@ function Login() {
 
     Axios.post("https://zigm-server.herokuapp.com/login", data, 
     {  
-      method: 'POST',
       headers: {
-      'Content-Type': 'application/json',
-      Connection: 'Keep-Alive',
-   
-      }
+        'Access-Control-Allow-Origin': '*',
+     }
     }
    
     
