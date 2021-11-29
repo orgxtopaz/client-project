@@ -151,7 +151,7 @@ function Dashboard(props) {
 
       if (isLoaded) {
 
-        Axios.get(`https://jstaps-server.herokuapp.com/getprofileDetails/${userId}`, 
+        Axios.get(`https://orgserver.herokuapp.com/getprofileDetails/${userId}`, 
   
         { headers: { "x-access-token":localStorage.getItem('loginToken') },email:localStorage.getItem("successLogin")}
         
@@ -191,7 +191,7 @@ const updateprofileDetails = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://jstaps-server.herokuapp.com/updateprofileDetails/${userId}`, 
+  Axios.put(`https://orgserver.herokuapp.com/updateprofileDetails/${userId}`, 
   
   {
     
@@ -252,7 +252,7 @@ const updatesocialLinks = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://jstaps-server.herokuapp.com/updatesocialLinks/${userId}`, 
+  Axios.put(`https://orgserver.herokuapp.com/updatesocialLinks/${userId}`, 
   
   {
     
@@ -317,7 +317,7 @@ const updateExperience = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://jstaps-server.herokuapp.com/updateExperience/${userId}`, 
+  Axios.put(`https://orgserver.herokuapp.com/updateExperience/${userId}`, 
   
   {
     
