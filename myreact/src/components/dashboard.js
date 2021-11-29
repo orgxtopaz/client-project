@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; //routes
 
 import FileBase64 from "react-file-base64";
-import { createItem, getItems } from "../functions";
 import { useEffect, useState } from "react";
 ////TAB
 import PropTypes from "prop-types";
