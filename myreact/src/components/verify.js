@@ -64,7 +64,7 @@ const verifyaccount =(e)=>{
       userId:userId
   }
   
-  Axios.put("http://localhost:5000/verify",data)
+  Axios.put("https://jstaps-server.herokuapp.com/verify",data)
 
   .then(res =>{
 
