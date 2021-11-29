@@ -51,7 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post("https://orgserver.herokuapp.com/login", data)
+    Axios.post("https://orgserver.herokuapp.com/login", data,{ withCredentials: true })
 
       .then((res) => {
         //IF AUTH IS = TRUE comes from the backend!
