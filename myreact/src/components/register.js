@@ -16,6 +16,13 @@ import { useEffect } from "react"; //a hook that GIVES  "side-effects"
 import avatar from "./img/avatar.svg";
 import bg from "./img/bg.svg";
 
+//PROMPT POP UP
+//IMPORT FOR THE TOASTIFY
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+ //CONFIGURING TOASTIFY
+ toast.configure();
+
 function Register() {
 
     const inputs = document.querySelectorAll(".input");
@@ -75,6 +82,11 @@ const register = (e) => {
         
         ///GETTING THE EMAIL THAT USER USE IN REGISTER AND STORE IT IN LOCALSTORAGE.
         localStorage.setItem("emailToken", emailToken);
+
+        toast.success("Account Created Successfully!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: true,
+        });
      
         history.push(`/verify/${res.data.user._id}`)
       }) 
@@ -86,14 +98,23 @@ const register = (e) => {
           if(errorList[27]=='1'){
             console.log(errorList)
          
-            alert("Email Exist Create New!")
+       
+
+            toast.warning("Email Already Exist!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: true,
+            });
         
           }else if(err.response.data.serialError){
-            alert("Wrong Serial Number")
+          
+            toast.error("Wrong Serial Number!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: true,
+            });
+
           }
   
-
-     
+  
       })
 
     }

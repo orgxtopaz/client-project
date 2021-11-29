@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// import {itemRoutes} from './routes/items.js';
 let User = require("./models/user_model");
 
 const app = express();
@@ -86,64 +85,35 @@ app.post(
 
           const fullname = req.body.fullname;
           const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&usqp=CAU";
-          const bio = "bio";
+          const bio = "Add profile bio 300 characters only.";
           
           ////SOCIAL LINKS
-          const fb = "";
-          const instagram = "";
-          const telegram = "";
-          const linkedin = "";
-          const youtube = "";
-          const viber = "";
-          const tiktok = "";
-          const gcash = "";
+          const fb = "#";
+          const instagram = "#";
+          const telegram = "#";
+          const linkedin = "#";
+          const youtube = "#";
+          const viber = "#";
+          const tiktok = "#";
+          const gcash = "#";
 
 
          ////EXPERIENCES
-          const title = "";
-          const company = "";
-          const website = "";
-          const officeno = "";
-          const address = "";
+          const title = "N/A";
+          const company = "N/A";
+          const website = "N/A";
+          const officeno = "N/A";
+          const address = "N/A";
 
           ///CONTACT
-          const contactWebsite = "";
-          const contactNumber = "";
+          const contactWebsite = "#";
+          const contactNumber = "00xx";
         
 
 
         
      
-        
-          ///SEND CODE TO USER EMAIL REGISTERED!
-        const nodemailer = require('nodemailer');
-
-
-        // Step 1
-        let transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: "orgxtopazsystem@gmail.com",
-            pass: "orgxtopazsystem06+"
-          }
-        });
-
-          // Step 2
-          let mailOptions = {
-            from: 'orgxtopazsystem@gmail.com', // TODO: email sender
-            to: `${email}`, // TODO: email receiver
-            subject: 'Verification Code',
-            text: `Verify your Email using this code : ${code}`
-          };
-  
-          // Step 3
-          transporter.sendMail(mailOptions, (err, data) => {
-            if (err) {
-              console.log('Error occurs');
-            }
-            console.log('Email sent!!!');
-          });
-
+      
           
         const newUser = new User({
           address,
@@ -172,7 +142,49 @@ app.post(
 
         newUser
         .save() //PROMISE
-        .then((user) => res.json({  email: email, fullname: fullname,user })) // IF TRUE CHECK
+        .then((user) => {
+          res.json({  email: email, fullname: fullname,user })
+            
+          ///SEND CODE TO USER EMAIL REGISTERED!
+        const nodemailer = require('nodemailer');
+
+
+        // Step 1
+        let transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: "orgxtopazsystem@gmail.com",
+            pass: "orgxtopazsystem06+"
+          }
+        });
+
+          // Step 2
+          let mailOptions = {
+            from: 'orgxtopazsystem@gmail.com', // TODO: email sender
+            to: `${email}`, // TODO: email receiver
+            subject: 'Email Verification Code',
+            text: `Verify your Email using this code : ${code}
+
+
+            Note : Disregard this email if you are already verified.
+            
+            
+            
+            `
+          };
+  
+          // Step 3
+          transporter.sendMail(mailOptions, (err, data) => {
+            if (err) {
+              console.log('Error occurs');
+            }
+            console.log('Email sent!!!');
+          });
+
+
+        })
+
+
         .catch((err) => res.status(400).json("Errors: " + err)); // CATCH THE ERROR
 
         }else{
@@ -297,7 +309,8 @@ app.get("/getprofileDetails/:id",verifyJWT,(req, res, next) => {
 
 
 
-////ADD PROFILE Details
+
+////ADD / UPDATE PROFILE Details
 app.put("/updateprofileDetails/:id",(req, res, next) => {
   let bio = req.body.bio;
   let image = req.body.image;
@@ -307,7 +320,7 @@ app.put("/updateprofileDetails/:id",(req, res, next) => {
           .then((user) => {
 
             ///CHECKING THE CHANGES AND APPLY
-            if(bio==""){
+            if(bio=="" ){
               bio+=user.bio
 
             }if(image==""){
@@ -333,6 +346,127 @@ app.put("/updateprofileDetails/:id",(req, res, next) => {
   }
 );
 
+////ADD / UPDATE SOCIAL LINKS
+app.put("/updatesocialLinks/:id",(req, res, next) => {
+  let fb = req.body.fb
+  let instagram =req.body.instagram
+  let telegram=req.body.telegram
+  let  linkedin=req.body.linkedin
+  let  youtube=req.body.youtube
+  let viber=req.body.viber
+  let tiktok=req.body.tiktok
+  let gcash=req.body.gcash
+  
+        User.findById(req.params.id)
+          .then((user) => {
+
+            ///CHECKING THE CHANGES AND APPLY
+            if(fb==""){
+              fb+=user.fb
+
+            }if(instagram==""){
+              instagram+=user.instagram
+            }if(telegram==""){
+              telegram+=user.telegram
+            }
+            if(linkedin==""){
+              linkedin+=user.linkedin
+
+            }if(youtube==""){
+              youtube+=user.youtube
+            }if(viber==""){
+              viber+=user.viber
+            }
+            if(tiktok==""){
+              tiktok+=user.tiktok
+
+            }if(gcash==""){
+              gcash+=user.gcash
+            }
+
+
+            user.fb = fb;
+            user.instagram = instagram;
+            user.telegram = telegram;
+            user.linkedin = linkedin;
+            user.youtube= youtube;
+            user.viber = viber;
+            user.tiktok = tiktok;
+            user.gcash = gcash
+            user.save()
+
+              .then((user) => res.json(user))
+              .catch((err) => res.status(400).json(err));
+          })
+          .catch((err) => res.status(400).json("Error: " + err));
+    
+    
+  }
+);
+
+///EMD SOCIAL LINKS FUNCTION
+
+
+
+
+////ADD / UPDATE EXPERIENCE
+app.put("/updateExperience/:id",(req, res, next) => {
+  let title= req.body.title;
+  let company= req.body.company;
+  let website = req.body.website;
+  let  officeno=req.body. officeno
+  let  address=req.body.address;
+  let contactWebsite=req.body.contactWebsite
+  let  contactNumber=req.body.contactNumber
+  
+        User.findById(req.params.id)
+          .then((user) => {
+
+            ///CHECKING THE CHANGES AND APPLY
+            if(title==""){
+              title+=user.title
+
+            }if(company==""){
+              company+=user.company
+            }
+            if(website==""){
+              website+=user.website
+            }
+            if(officeno==""){
+              officeno+=user.officeno
+
+            }
+            if(address==""){
+              address+=user.address
+            }
+            if(contactWebsite==""){
+              contactWebsite+=user.contactWebsite
+            }
+            if(contactNumber==""){
+              contactNumber+=user.contactNumber
+
+            }
+
+
+            user.title = title;
+            user.company = company;
+            user.website = website;
+            user.officeno = officeno;
+            user.address= address;
+            user.contactWebsite = contactWebsite;
+            user.contactNumber = contactNumber;
+      
+            user.save()
+
+              .then((user) => res.json(user))
+              .catch((err) => res.status(400).json(err));
+          })
+          .catch((err) => res.status(400).json("Error: " + err));    
+  }
+);
+
+
+////END EXPERIENCE FUNCTIONS
 
 
 

@@ -14,6 +14,12 @@ import Axios from "axios"; //allows us to make GET and POST requests from the br
 import avatar from "./img/avatar.svg";
 import bg from "./img/verify.svg";
 
+//IMPORT FOR THE TOASTIFY
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+ //CONFIGURING TOASTIFY
+ toast.configure();
+
 function Verify() {
 
     const inputs = document.querySelectorAll(".input");
@@ -61,13 +67,21 @@ const verifyaccount =(e)=>{
   Axios.put("http://localhost:5000/verify",data)
 
   .then(res =>{
-  
-   alert(res.data)
+
+    toast.success("Email Verified Successfully!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
    history.push("/login") //GOINF BACK TO LOG IN PAGE
  
   })
   .catch(err =>{
-      alert(err.response.data)
+
+      toast.error("Wrong Verification Code!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: true,
+      });
+
   })
 
 }

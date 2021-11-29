@@ -27,9 +27,16 @@ import Box from "@material-ui/core/Box";
 import bg from "./img/dashboard.svg";
 import wave from "./img/wave.svg";
 
+//IMPORT FOR THE TOASTIFY
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+//CONFIGURING TOASTIFY
+
+
 import { useHistory } from "react-router-dom"; // allows us to access our path / route history.
 import Axios from "axios"; //allows us to make GET and POST requests from the browser.
 
+toast.configure();
 
 
 function TabPanel(props) {
@@ -201,14 +208,23 @@ const updateprofileDetails = (e)=>{
   
   .then((response) => {
     setprofileDetails(response.data);
-    alert("Successfully Saved!")
+
+
+    toast.success("Profile Details Successfully Saved!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
     window.location.reload();
 
 
  
   })
   .catch((error) => {
-    console.error(error)
+   
+    toast.error("Something wrong on server!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
   })
 
 
@@ -221,14 +237,142 @@ const updateprofileDetails = (e)=>{
 ///END PROFILE DETAILS
 
 
+
+///UPDATING SOCIAL MEDIAS LINKS
+const [fb, setFb] = useState([]);
+const [instagram, setInstagram] = useState([]);
+const [telegram, setTelegram] = useState([]);
+const [linkedin, setlinkedIn] = useState([]);
+const [youtube, setYoutube] = useState([]);
+const [viber, setViber] = useState([]);
+const [tiktok, setTiktok] = useState([]);
+const [gcash, setGcash] = useState([]);
+
+const updatesocialLinks = (e)=>{
+  e.preventDefault();
+  console.log(item)
+
+  Axios.put(`http://localhost:5000/updatesocialLinks/${userId}`, 
+  
+  {
+    
+    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    email:localStorage.getItem("successLogin"),
+    fb:fb,
+    instagram:instagram,
+    telegram:telegram,
+    linkedin:linkedin,
+    youtube:youtube,
+    viber:viber,
+    tiktok:tiktok,
+    gcash:gcash,
+
+  }
+  
+  )
+
+  
+  .then((response) => {
+    setprofileDetails(response.data);
+ 
+
+    toast.success("Social Links Successfully Saved!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
+    window.location.reload();
+
+
+ 
+  })
+  .catch((error) => {
+    
+    toast.error("Something wrong on server!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
+  })
+
+
+
+
+
+
+}
+///END UPDATING SOCIAL MEDIAS
+
+
+
+
+///UPDATING EXPERIENCE
+const [title, setTitle] = useState([]);
+const [company, setCompany] = useState([]);
+const [website, setWebsite] = useState([]);
+const [officeno, setOfficeno] = useState([]);
+const [address, setAddress] = useState([]);
+const [contactWebsite, setContactWebsite] = useState([]);
+const [contactNumber, setContactNumber] = useState([]);
+
+const updateExperience = (e)=>{
+  e.preventDefault();
+  console.log(item)
+
+  Axios.put(`http://localhost:5000/updateExperience/${userId}`, 
+  
+  {
+    
+    headers: { "x-access-token":localStorage.getItem('loginToken') },
+    email:localStorage.getItem("successLogin"),
+    title:title,
+    company:company,
+    website:website,
+    officeno:officeno,
+    address:address,
+    contactWebsite:contactWebsite,
+    contactNumber:contactNumber
+
+  }
+  
+  )
+
+  
+  .then((response) => {
+    setprofileDetails(response.data);
+    
+    toast.success("Experience Details Successfully Saved!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
+  
+    window.location.reload();
+
+
+ 
+  })
+  .catch((error) => {
+  
+    toast.error("Something wrong on server!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: true,
+    });
+  
+  })
+
+
+
+
+
+
+}
+///END UPDATING EXPERIENCE
+
+
+
   return (
    
 
     <div>        
-   {/* {profileDetails?.map(about => ( */}
-   {/* {profileDetails.map(result => (
-     <p>{result.fullname}</p>
-   ))} */}
+
 
   <>
    
@@ -288,7 +432,7 @@ const updateprofileDetails = (e)=>{
                 <center>
                   <img
                     src={profileDetails.image}
-                    style={{ borderRadius: "50%", width: "46%" }}
+                    style={{ borderRadius: "50%", width: "46%",height: "140px" }}
                     alt=""
                     className="profileimage"
                   ></img>
@@ -368,7 +512,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                        href ={profileDetails.fb}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -387,7 +531,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                      href ={profileDetails.instagram}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -406,7 +550,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.telegram}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -426,7 +570,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.linkedin}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -446,7 +590,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.youtube}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -465,7 +609,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.viber}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -484,7 +628,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.tiktok}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -504,7 +648,7 @@ const updateprofileDetails = (e)=>{
                       }}
                     >
                       <a
-                        href
+                         href ={profileDetails.gcash}
                         className="social-icon"
                         style={{
                           textDecoration: "none",
@@ -549,8 +693,7 @@ const updateprofileDetails = (e)=>{
                         <center>
                           <img
                           src={profileDetails.image}
-                            style={{ borderRadius: "50%", width: "46%" }}
-                            alt=""
+                          style={{ borderRadius: "50%", width: "46%",height: "140px" }}                            alt=""
                           ></img>
                         </center>
                         <br></br>
@@ -587,6 +730,7 @@ const updateprofileDetails = (e)=>{
                             rows="3"
                             style={{ height: "auto" }}
                             defaultValue={profileDetails.bio}
+                            maxlength="300"
 
                           ></textarea>
                         </div>
@@ -622,11 +766,13 @@ const updateprofileDetails = (e)=>{
                   aria-hidden="true"
                 >
                   <div className="modal-dialog" role="document">
-                    <div className="modal-content">
+                    <div className="modal-content"> 
                       <div className="modal-header text-center">
                         <h4 className="modal-title w-100 font-weight-bold">
                           Social Links
                         </h4>
+
+                        
                         <button
                           type="button"
                           className="close"
@@ -636,7 +782,9 @@ const updateprofileDetails = (e)=>{
                           <span aria-hidden="true">×</span>
                         </button>
                       </div>
+                      <br></br>
                       
+                      <small className="text-danger">*Type "#" on the field you don't want to connect links.  </small>
 
                       <form action="" >
                         <center>
@@ -647,7 +795,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.fb}
+                                onChange={(event) => {
+                                  setFb(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -670,7 +820,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.instagram}
+                                onChange={(event) => {
+                                  setInstagram(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="awrawrwa">
@@ -692,7 +844,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.telegram}
+                                onChange={(event) => {
+                                  setTelegram(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -715,7 +869,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.linkedin}
+                                onChange={(event) => {
+                                  setlinkedIn(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -738,7 +894,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.youtube}
+                                onChange={(event) => {
+                                  setYoutube(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -761,7 +919,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.viber}
+                                onChange={(event) => {
+                                  setViber(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -784,7 +944,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.tiktok}
+                                onChange={(event) => {
+                                  setTiktok(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -808,7 +970,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.gcash}
+                                onChange={(event) => {
+                                  setGcash(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -826,6 +990,7 @@ const updateprofileDetails = (e)=>{
                           <button
                             className="btn btn-deep-orange"
                             style={{ color: "black" }}
+                            onClick={updatesocialLinks}
                           >
                             Save
                           </button>
@@ -848,12 +1013,12 @@ const updateprofileDetails = (e)=>{
 
               <div className="card cardbg" style={{ width: "20rem" }}>
                 <center>
+                  <br></br>
                 <img
                   className="card-img-top"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf6vq9JCbUVqSynuoQmCaMJ63Gf-BvvOSuZh4tGRryUXkgrHVBFyr1fok8SMZiLDC2Rd0&usqp=CAU"
+                  src={profileDetails.image}
                   alt="Card image cap"
-                  style={{ borderRadius: "50%", width: "46%" }}
-                />
+                  style={{ borderRadius: "50%", width: "46%",height: "140px" }}                />
                 </center>
                 <div className="card-body">
                   <h5 className="card-title"></h5>
@@ -895,60 +1060,67 @@ const updateprofileDetails = (e)=>{
                   <div className="collapse" id="collapseExample">
                   
                     <div className="card-header">
-                      <span className="title">~Title~</span>{" "}
+                      <span className="title" >🧰Title</span>{" "}
                      
                     </div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item">
                         {" "}
-                        <p className="card-text" >
-                          Smartest Name Card                     
+                        <p className="card-text" style={{textShadow: "0px 2px 0px black"}} >
+                          {profileDetails.title}                   
 
                       </p>
                       </li>
                     </ul>
                     <div className="card-header">
-                      <span className="title">~Company~</span>{" "}
+                      <span className="title">🏢Company</span>{" "}
                     </div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item">
                         {" "}
-                        <p className="card-text">
-                          One Good Team
+                        <p className="card-text" style={{textShadow: "0px 2px 0px black"}} >
+                          {profileDetails.company}
 
                       </p>
                       </li>
                     </ul>
                     <div className="card-header">
-                      <span className="title">~Website~</span>{" "}
+                      <span className="title">🌎Website</span>{" "}
                     </div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item">
                         {" "}
-                        <p className="card-text">
-                          https://onegoodcard.com/
+                      
+                        <a href ={profileDetails.website} className="websiteHover">
+                        <center>
+                        <p className="card-text" style={{textShadow: "0px 2px 0px black"}} >
+                     
+                          {profileDetails.website}
+                      </p>
+                      </center>
+                      </a>
+                      
+                      </li>
+                    </ul>
+                    <div className="card-header">
+                      <span className="title">📞Office no.</span>{" "}
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        {" "}
+                        <p className="card-text" style={{textShadow: "0px 2px 0px black"}} >
+                          {profileDetails.officeno}
                       </p>
                       </li>
                     </ul>
                     <div className="card-header">
-                      <span className="title">~Office no.~</span>{" "}
+                      <span className="title">📍Address </span>{" "}
                     </div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item">
                         {" "}
-                        <p className="card-text">
-                          +65 61234567
-                      </p>
-                      </li>
-                    </ul>
-                    <div className="card-header">
-                      <span className="title">~Address~ </span>{" "}
-                    </div>
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item">
-                        {" "}
-                        <p className="card-text">
-                          73 Ayer Rajah Crescent, #03-28, Singapore 139952 #03-28
+                        <p className="card-text" style={{textShadow: "0px 2px 0px black"}} >
+                          {profileDetails.address}
                       </p>
                       </li>
                     </ul>
@@ -965,7 +1137,7 @@ const updateprofileDetails = (e)=>{
                   type="text"
                   id="username"
                   autoComplete="off"
-                  value="https://onegoodcard.com/"
+                  value={profileDetails.contactWebsite}
                   className="contactText"
                   readOnly
 
@@ -990,7 +1162,7 @@ const updateprofileDetails = (e)=>{
                   id="username"
                   autoComplete="off"
                   className="contactText"
-                  value="hello@onegood.team"
+                  value={profileDetails.email}
                   readOnly
 
                   style={{ width:"50%" }}
@@ -1015,7 +1187,7 @@ const updateprofileDetails = (e)=>{
                   id="username"
                   autoComplete="off"
                   className="contactText"
-                  value="+65 81234567"
+                  value={profileDetails.contactNumber}
                   readOnly
 
                   style={{ width:"50%" }}
@@ -1060,7 +1232,9 @@ const updateprofileDetails = (e)=>{
                           <span aria-hidden="true">×</span>
                         </button>
                       </div>
-                      
+                      <br></br>
+                      <small className="text-danger">*Type "N/A" on the field you don't want to provide details.  </small>
+
 
                       <form action="" >
                         <center>
@@ -1071,7 +1245,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.title}
+                                onChange={(event) => {
+                                  setTitle(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1094,7 +1270,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.company}
+                                onChange={(event) => {
+                                  setCompany(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="awrawrwa">
@@ -1116,7 +1294,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.website}
+                                onChange={(event) => {
+                                  setWebsite(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1139,7 +1319,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.officeno}
+                                onChange={(event) => {
+                                  setOfficeno(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1162,7 +1344,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.address}
+                                onChange={(event) => {
+                                  setAddress(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1188,7 +1372,9 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.contactWebsite}
+                                onChange={(event) => {
+                                  setContactWebsite(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1211,7 +1397,8 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.email}
+                            
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1235,7 +1422,10 @@ const updateprofileDetails = (e)=>{
                                 id="username"
                                 autoComplete="off"
                                 required
-                                defaultValue=""
+                                defaultValue={profileDetails.contactNumber}
+
+                                onChange={(event) => {
+                                  setContactNumber(event.target.value)}}
                                 style={{ paddingLeft: "10%" }}
                               />
                               <label htmlFor="wqewqewq">
@@ -1253,6 +1443,7 @@ const updateprofileDetails = (e)=>{
                           <button
                             className="btn btn-deep-orange"
                             style={{ color: "black" }}
+                            onClick={updateExperience}
                           >
                             Save
                           </button>
