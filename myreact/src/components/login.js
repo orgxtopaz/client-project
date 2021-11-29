@@ -51,7 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post("https://orgxtopaz-server.herokuapp.com/login", data)
+    Axios.post("https://zigm-server.herokuapp.com/login", data)
 
       .then((res) => {
         //IF AUTH IS = TRUE comes from the backend!
