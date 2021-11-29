@@ -56,11 +56,11 @@ function Login() {
       headers: {
         'Access-Control-Allow-Origin': '*',
      }
-    }
+    })
    
     
     
-    )
+   
 
       .then((res) => {
         //IF AUTH IS = TRUE comes from the backend!
