@@ -51,19 +51,14 @@ function Login() {
       email: email,
     };
 
-    Axios.post("https://zigm-server.herokuapp.com/login", data, 
-    {  
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      Connection: 'Keep-Alive',
+    Axios.post("https://zigm-server.herokuapp.com/login", data )
+  
+      
    
-      }
-    }
    
     
     
-    )
+   
 
       .then((res) => {
         //IF AUTH IS = TRUE comes from the backend!
