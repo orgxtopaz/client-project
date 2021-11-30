@@ -9,8 +9,9 @@ const mongoose = require("mongoose");
 
 //Routing defines the way in which the client requests are handled by the application endpoints.
 require("dotenv").config();
-app.use(express.json()); // migzapp use express.json
 app.use(cors());
+
+app.use(express.json()); // migzapp use express.json
 
 const jwt = require('jsonwebtoken');
 
@@ -504,9 +505,9 @@ let  contactNumber=req.body.contactNumber
 
 
 
+const uri = process.env.ATLAS_URI; // getting the datas in the .env which is the mongo database
 
 
-const uri = "mongodb://orgxtopazsystem:orgxtopazsystem@cluster0-shard-00-00.bpdki.mongodb.net:27017,cluster0-shard-00-01.bpdki.mongodb.net:27017,cluster0-shard-00-02.bpdki.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-dtrgxv-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 mongoose.connect(
   uri,
