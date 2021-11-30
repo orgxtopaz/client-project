@@ -84,7 +84,7 @@ app.post(
       return res.status(400).json(arrayofErrors);
 
     } else {
-      const serial ="123";
+      const serial ="J3TC@RD2021";
 
       if(req.body.serial==serial){
         const email = req.body.email;
