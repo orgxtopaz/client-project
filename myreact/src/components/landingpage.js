@@ -27,7 +27,7 @@ if(localStorage.getItem('successLogin')!=null){
       <div className="containerhome">
         <div className="logo">
           <img src={logo} alt="Logo2" />
-          <h3>Borotoy branch</h3>
+          <h3>JETCard</h3>
         </div>
         <div className="linkshome">
           <ul>
@@ -52,12 +52,11 @@ if(localStorage.getItem('successLogin')!=null){
       <div className="containerhome">
         <div className="left">
           <div className="big-title">
-            <h1>Future is here,</h1>
-            <h1>Start Exploring now.</h1>
+            <h1>Most powerful business, </h1>
+            <h1>calling card YET.</h1>
           </div>
           <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-            eius distinctio odit, magni magnam qui ex perferendis vitae!
+          Share contact details, socials, and links with one innovative card tap.
           </p>
           <div className="cta">
             <a href="/register" >
