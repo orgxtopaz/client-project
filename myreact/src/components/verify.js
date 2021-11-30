@@ -64,7 +64,7 @@ const verifyaccount =(e)=>{
       userId:userId
   }
   
-  Axios.put('https://jetcardsystem-server.herokuapp.com/verify',data,
+  Axios.put('https://jstaps.herokuapp.com/verify',data,
   {  
     method: 'PUT',
     headers: {
