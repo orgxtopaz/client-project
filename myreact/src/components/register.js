@@ -65,15 +65,8 @@ const register = (e) => {
   console.log(errorList)
 
 
-    Axios.post("https://zigm-server.herokuapp.com/add",
-    {  
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      Connection: 'Keep-Alive',
+    Axios.post("http://zigm-server.herokuapp.com/add/",
    
-      }
-    },
     {
     
       fullname: fullname,
