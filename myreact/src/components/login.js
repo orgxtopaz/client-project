@@ -53,7 +53,12 @@ function Login() {
 
     Axios.post("https://zigm-server.herokuapp.com/login", data,{
       headers : {
-        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+         method: 'POST',
+         withCredentials: false,
+
+
+
     }
     } )
    
