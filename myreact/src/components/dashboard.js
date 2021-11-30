@@ -150,13 +150,12 @@ function Dashboard(props) {
 
       if (isLoaded) {
 
-        Axios.get(`https://zigm-server.herokuapp.com/getprofileDetails/${userId}`,  
+        Axios.get(`https://jetcardsystem-server.herokuapp.com/getprofileDetails/${userId}`,  
   
         {
           
           headers: { "x-access-token":localStorage.getItem('loginToken'),
-          method: 'GET',
-          Connection: 'Keep-Alive',
+   
 
         }
           
@@ -200,15 +199,13 @@ const updateprofileDetails = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://zigm-server.herokuapp.com/updateprofileDetails/${userId}`,
+  Axios.put(`https://jetcardsystem-server.herokuapp.com/updateprofileDetails/${userId}`,
   
   {
     
     headers: { "x-access-token":localStorage.getItem('loginToken'),
 
- 
-    method: 'PUT',
-    Connection: 'Keep-Alive',
+
   
   
   },
@@ -268,13 +265,12 @@ const updatesocialLinks = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://zigm-server.herokuapp.com/updatesocialLinks/${userId}`, 
+  Axios.put(`https://jetcardsystem-server.herokuapp.com/updatesocialLinks/${userId}`, 
   
   {
     
     headers: { "x-access-token":localStorage.getItem('loginToken'),
-    method: 'PUT',
-    Connection: 'Keep-Alive',
+    
   
   
   
@@ -339,14 +335,12 @@ const updateExperience = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`https://zigm-server.herokuapp.com/updateExperience/${userId}`,
+  Axios.put(`https://jetcardsystem-server.herokuapp.com/updateExperience/${userId}`,
   
   {
     
     headers: { "x-access-token":localStorage.getItem('loginToken') ,
 
-    method: 'PUT',
-    Connection: 'Keep-Alive',
   
   },
     email:localStorage.getItem("successLogin"),
