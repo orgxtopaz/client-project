@@ -51,12 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post("http://zigm-server.herokuapp.com/login/", data, 
-    {  
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-     }
-    })
+    Axios.post("http://zigm-server.herokuapp.com/login/", data)
    
     
     
