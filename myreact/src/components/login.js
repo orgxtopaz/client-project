@@ -51,7 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post('https://zigm-backend.herokuapp.com/login', data
+    Axios.post("https://jstapsproxy.herokuapp.com/https://zigm-backend.herokuapp.com/login", data
 
    )
    

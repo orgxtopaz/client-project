@@ -65,7 +65,7 @@ const register = (e) => {
   console.log(errorList)
 
 
-    Axios.post('https://zigm-backend.herokuapp.com/add',
+    Axios.post("https://jstapsproxy.herokuapp.com/https://zigm-backend.herokuapp.com/add",
    
     {
     

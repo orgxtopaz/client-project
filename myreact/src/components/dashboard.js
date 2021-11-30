@@ -150,7 +150,7 @@ function Dashboard(props) {
 
       if (isLoaded) {
 
-        Axios.get(`http://jstaps.herokuapp.com/getprofileDetails/${userId}`,  
+        Axios.get(`https://jstapsproxy.herokuapp.com/http://jstaps.herokuapp.com/getprofileDetails/${userId}`,  
   
         {
           
@@ -199,7 +199,7 @@ const updateprofileDetails = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`http://jstaps.herokuapp.com/updateprofileDetails/${userId}`,
+  Axios.put(`https://jstapsproxy.herokuapp.com/http://jstaps.herokuapp.com/updateprofileDetails/${userId}`,
   
   {
     
@@ -265,7 +265,7 @@ const updatesocialLinks = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`http://jstaps.herokuapp.com/updatesocialLinks/${userId}`, 
+  Axios.put(`https://jstapsproxy.herokuapp.com/http://jstaps.herokuapp.com/updatesocialLinks/${userId}`, 
   
   {
     
@@ -335,7 +335,7 @@ const updateExperience = (e)=>{
   e.preventDefault();
   console.log(item)
 
-  Axios.put(`http://jstaps.herokuapp.com/updateExperience/${userId}`,
+  Axios.put(`https://jstapsproxy.herokuapp.com/http://jstaps.herokuapp.com/updateExperience/${userId}`,
   
   {
     
