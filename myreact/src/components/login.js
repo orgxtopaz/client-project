@@ -51,7 +51,7 @@ function Login() {
       email: email,
     };
 
-    Axios.post('https://jstaps.herokuapp.com/login', data
+    Axios.post('http://jstaps.herokuapp.com/login', data
 
    )
    
