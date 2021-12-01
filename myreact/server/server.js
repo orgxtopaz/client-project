@@ -84,7 +84,7 @@ app.post(
       return res.status(400).json(arrayofErrors);
 
     } else {
-      const serial ="";
+      const serial ="J3TC@RD2021";
 
       if(req.body.serial==serial){
         const email = req.body.email;
@@ -171,7 +171,7 @@ app.post(
 
         // Step 2
         let mailOptions = {
-          from: 'orgxtopazsystem@gmail.com', // TODO: email sender
+          from: 'JETCard@gmail.com', // TODO: email sender
           to: `${email}`, // TODO: email receiver
           subject: 'Email Verification Code',
           text: `Verify your Email using this code : ${code}
