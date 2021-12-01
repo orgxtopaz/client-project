@@ -234,7 +234,7 @@ const updateprofileDetails = (e)=>{
   })
   .catch((error) => {
    
-    toast.error("Something wrong on server!", {
+    toast.error("Something wrong on server!/File is too large", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: true,
     });
